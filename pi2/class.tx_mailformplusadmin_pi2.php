@@ -80,7 +80,7 @@ class tx_mailformplusadmin_pi2 extends tslib_pibase {
                 $content .= 'No data!';
             }
 
-            return $content.'öööö';
+            return $content;
 	}
         
         function showFormhandler($pluginId,$to_email,$subject,$content_email)
@@ -191,7 +191,7 @@ class tx_mailformplusadmin_pi2 extends tslib_pibase {
                 jQuery("newForm").replaceWith(jQuery("newForm").html());
             });
             </script>';
-            return $content.$pluginId.$table;
+            return $content;
         }
 
 }
