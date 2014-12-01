@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;web_txmailformplusadminM1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">Mailformplus Admin</label>
+			<label index="confirm_delete">Do you really want to delete the item/items?</label>
+			<label index="export_alert">You have to choose at least one altenative!</label>
+			<label index="list_items">List Items</label>
+			<label index="choose_fields">Choose which fields to list</label>
+			<label index="export">Export</label>
+			<label index="previous">Previous</label>
+			<label index="next">Next</label>
+			<label index="choose_page">Please choose a page!</label>
+			<label index="check_all">Check/uncheck all</label>
+			<label index="delete">Delete</label>
+			<label index="view_item">View item</label>
+			<label index="save">Save</label>
+			<label index="cancel">Cancel</label>
+			<label index="items_saved">Items are saved!</label>
+			<label index="back">Back</label>
+			<label index="display_item">Display item</label>
+			<label index="choose_format">Choose export format</label>
+			<label index="header">Header</label>
+			<label index="extra">Extra</label>
+			<label index="pdf_list">List in pdf-format</label>
+			<label index="tab_file">Tab-separated text-file</label>
+			<label index="comma_file">Comma-separated text-file</label>
+			<label index="csv_file">CSV-file</label>
+			<label index="pdf_labels">Labels in pdf-format (avery 7160)</label>
+		</languageKey>
+		<languageKey index="se" type="array">
+			<label index="title">Mailformplus Admin</label>
+			<label index="confirm_delete">Vill du verkligen radera posten/posterna?</label>
+			<label index="export_alert">Du måste kryssa i minst ett alternativ!</label>
+			<label index="list_items">Lista poster</label>
+			<label index="choose_fields">Välj vilka fält som skall listas</label>
+			<label index="export">Exportera</label>
+			<label index="previous">Förra</label>
+			<label index="next">Nästa</label>
+			<label index="choose_page">Välj en sida i sidträdet!</label>
+			<label index="check_all">Markera/avmarkera alla</label>
+			<label index="delete">Radera</label>
+			<label index="view_item">Granska post</label>
+			<label index="save">Spara</label>
+			<label index="cancel">Avbryt</label>
+			<label index="items_saved">Uppgifterna är sparade!</label>	
+			<label index="back">Tillbaka</label>
+			<label index="display_item">Visa enskild post</label>
+			<label index="choose_format">Välj exportformat</label>
+			<label index="header">Rubrik</label>
+			<label index="extra">Extra</label>
+			<label index="pdf_list">Lista i pdf-format</label>	
+			<label index="tab_file">Tab-separerad textfil</label>
+			<label index="comma_file">Komma-separerad textfil</label>
+			<label index="csv_file">CSV-fil</label>
+			<label index="pdf_labels">Etiketter i pdf-format (avery 7160)</label>
+		</languageKey>
+	</data>
+</T3locallang>

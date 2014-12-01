@@ -1,0 +1,122 @@
+includeLibs.testMd5 = typo3conf/ext/mailformplus_admin/res/getflexformvalue.php
+
+plugin.Tx_Formhandler.settings {   
+    #debug = 1    
+    templateFile = typo3conf/ext/mailformplus_admin/templates/step-1.html 
+    formValuesPrefix = formhandler    
+    finishers {
+        1.class = Finisher_Mail  
+        1.config {
+            admin {
+                to_email = TEXT
+                to_email.data = GP:to_email
+                subject = TEXT
+                subject.data = GP:subject
+                #to_email = webmaster@lth.se
+                #subject = sucker
+            }
+            user {
+            }
+        }   
+        9.class=Finisher_SubmittedOK
+        9.config {
+            returns=1
+        } 
+    }
+    markers {
+        #myCustomMarker = TEXT
+        #myCustomMarker.value = Hello world
+
+        myCustomMarker = USER
+        myCustomMarker {
+            userFunc = user_getflexformvalue->main
+        }
+    }
+}
+
+plugin.tx_mailformplusadmin_pi2.formhandler < plugin.Tx_Formhandler
+plugin.tx_mailformplusadmin_pi2.formhandler.settings {
+    #debug=1
+	# This is the title of the predefined form shown in the dropdown box in the plugin options.
+	#name = Formhandler AJAX Submit Form
+	
+	# All form fields are prefixed with this values (e.g. contact[name])
+	formValuesPrefix = formhandler
+
+	langFile.1 = TEXT
+	langFile.1.value = typo3conf/ext/mailformplus_admin/templates/lang.xml
+
+	templateFile = TEXT
+	templateFile.value = typo3conf/ext/mailformplus_admin/templates/step-1.html
+
+	# The master template is a file containing the markup for specific field types or other sub templates (e.g. for emails). You can use these predefined markups in your HTML template for a specific form.
+	masterTemplateFile = TEXT
+	masterTemplateFile.value = typo3conf/ext/mailformplus_admin/templates/mastertemplate.html
+	
+	# CSS files
+	cssFile {
+		#10 = TEXT
+		#10.value = typo3conf/ext/mailformplus_admin/templates/foundation.min.css
+		#10.if.isTrue = {$formhandlerExamples.basic.ajax-submit.includeFoundationCSS}
+		20 = TEXT
+		20.value = typo3conf/ext/mailformplus_admin/templates/special.css
+	}
+	
+	# In case an error occurred, all markers ###is_error_[fieldname]### are filled with the configured value of the setting "default".
+	isErrorMarker {
+		default = error
+	}
+	
+	# These wraps define how an error messages looks like. The message itself is set in the lang file.
+	singleErrorTemplate {
+		totalWrap = <small class="error">|</small>
+	}
+
+	# This block defines the error checks performed when the user hits submit.
+	validators.disable=1
+	
+	ajax {
+		class = AjaxHandler_JQuery
+		config {
+			ajaxSubmit = 1
+		}
+	}
+
+	# Finishers are called after the form was submitted successfully (without errors).
+	finishers {
+
+		# Finisher_Mail sends emails to an admin and/or the user.
+		1.class = Finisher_Mail
+		1.config {
+			admin {
+				to_email = webmaster@lth.se
+				subject = sucker
+			}
+		}
+		9.class=Finisher_SubmittedOK
+		9.config {
+                    returns=0
+		}
+	}
+
+}
+
+# If the user has chosen to receive a copy of the contact request, reconfigure Finisher_Mail to send an email to the user to.
+[globalVar = GP:contact|receive-copy = 1]
+plugin.tx_mailformplusadmin_pi2.formhandler.settings {
+	finishers {
+		1.config {
+			user {
+				templateFile = TEXT
+				templateFile.value = typo3conf/ext/mailformplus_admin/templates/email-user.html
+                                sender_email = webmaster@lth.se
+				to_email = webmaster@lth.se
+				subject = TEXT
+				subject.data = sucker
+			}
+		}
+
+	}
+
+}
+[global]

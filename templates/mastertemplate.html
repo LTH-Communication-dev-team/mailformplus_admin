@@ -1,0 +1,369 @@
+<!-- ###master_input### -->
+<div class="row">
+	<div class="large-3 columns">
+		<label class="inline ###is_error_###fieldname######" for="###fieldname###">###LLL:###fieldname###### ###required_###fieldname######</label>
+	</div>
+	<div class="large-9 columns">
+		<input class="###is_error_###fieldname######" type="text" size="20" id="###fieldname###" name="###formValuesPrefix###[###fieldname###]" value="###value_###fieldname######"/>
+		###error_###fieldname######
+	</div>
+</div>
+<!-- ###master_input### -->
+
+<!-- ###master_textarea### -->  
+<div class="row">
+	<div class="large-3 columns">
+		<label class="inline ###is_error_###fieldname######" for="###fieldname###" ###is_error_###fieldname######>###LLL:###fieldname###### ###required_###fieldname######</label>
+	</div>
+	<div class="large-9 columns">
+		<textarea class="###is_error_###fieldname######" rows="10" cols="30" id="###fieldname###" name="###formValuesPrefix###[###fieldname###]">###value_###fieldname######</textarea>
+		###error_###fieldname######
+	</div>
+</div>
+<!-- ###master_textarea### -->
+
+<!-- ###master_input_ajax### -->
+<div class="row ajax">
+	<div class="large-3 columns">
+		<div class="row">
+			<div class="large-10 small-10 columns">
+				<label class="inline ###is_error_###fieldname######" for="###fieldname###">###LLL:###fieldname###### ###required_###fieldname######</label>
+			</div>
+			<div class="large-2 small-2 columns">
+				###validate_###fieldname######
+			</div>
+		</div>
+	</div>
+	<div class="large-9 columns">
+		<input class="###is_error_###fieldname######" type="text" size="20" id="###fieldname###" name="###formValuesPrefix###[###fieldname###]" value="###value_###fieldname######"/>
+		###error_###fieldname######
+	</div>
+</div>
+<!-- ###master_input_ajax### -->
+
+<!-- ###master_textarea_ajax### -->
+<div class="row ajax">
+	<div class="large-3 columns">
+		<div class="row">
+			<div class="large-10 small-10 columns">
+				<label class="inline ###is_error_###fieldname######" for="###fieldname###">###LLL:###fieldname###### ###required_###fieldname######</label>
+			</div>
+			<div class="large-2 small-2 columns">
+				###validate_###fieldname######
+			</div>
+		</div>
+	</div>
+	<div class="large-9 columns">
+		<textarea class="###is_error_###fieldname######" rows="3" cols="30" id="###fieldname###" name="###formValuesPrefix###[###fieldname###]">###value_###fieldname######</textarea>
+		###error_###fieldname######
+	</div>
+</div>
+<!-- ###master_textarea_ajax### -->
+
+<!-- ###master_position### -->
+<div class="row">
+	<div class="large-3 columns">
+		<label for="position" class="inline ###is_error_position###">###LLL:position### ###required_position###</label>
+	</div>
+	<div class="large-9 columns">
+		<select id="position" class="###is_error_position###" name="###formValuesPrefix###[position]" class="select">
+			<option value="">---</option>
+			<option value="###LLL:job_1###" ###selected_position_###LLL:job_1######>###LLL:job_1###</option>
+			<option value="###LLL:job_2###" ###selected_position_###LLL:job_2######>###LLL:job_2###</option>
+			<option value="###LLL:job_3###" ###selected_position_###LLL:job_3######>###LLL:job_3###</option>
+		</select>
+		###error_position###
+		###validate_position###
+	</div>
+</div>
+<!-- ###master_position### -->
+
+<!-- ###master_contact-type### -->
+###error_contact-type###    
+<div class="row">
+	<div class="large-3 columns">
+		<label for="contact-type-private" ###is_error_contact-type###>###LLL:contact-type### ###required_contact-type###</label>
+	</div>	
+	<div class="large-9 columns">
+		<label for="contact-type-private">
+			<input type="radio" id="contact-type-private" name="###formValuesPrefix###[contact-type]" value="###LLL:contact-type.private###" ###checked_contact-type_###LLL:contact-type.private###### />
+			###LLL:contact-type.private###
+		</label>
+		<label for="contact-type-commercial">
+			<input type="radio" id="contact-type-commercial" name="###formValuesPrefix###[contact-type]" value="###LLL:contact-type.commercial###" ###checked_contact-type_###LLL:contact-type.commercial###### />
+			###LLL:contact-type.commercial###
+		</label>
+	</div>
+</div>
+<!-- ###master_contact-type### -->
+
+<!-- ###master_file### -->
+<div class="row files">
+	<div class="large-3 columns">
+		<label for="###fieldname###" class="inline ###is_error_###fieldname######">###LLL:###fieldname###### ###required_###fieldname######</label>
+	</div>
+	<div class="large-9 columns">
+		<input type="file" id="###fieldname###" name="###formValuesPrefix###[###fieldname###]" value="###value_###fieldname######" />
+		<input type="submit" ###submit_reload### class="button secondary tiny submit" value="###LLL:submit_reload###" />
+		###error_###fieldname######
+	</div>
+</div>
+<div class="row">
+	<div class="large-3 columns"></div>
+	<div class="large-9 columns">
+		<br />
+		<span>###LLL:allowedTypes###</span> <span>######fieldname###_allowedTypes###</span><br />
+		<span>###LLL:maxSize###</span> <span>######fieldname###_maxSize###</span><br />
+		<span>###LLL:uploadedFiles_count###</span> <span>######fieldname###_fileCount### / ######fieldname###_maxCount###</span><br />
+	</div>
+</div>
+######fieldname###_uploadedFiles###
+<!-- ###master_file### -->
+
+<!-- ###master_basicfile### -->
+<div class="row files">
+	<div class="large-3 columns">
+		<label for="###fieldname###" class="inline ###is_error_###fieldname######">###LLL:###fieldname###### ###required_###fieldname######</label>
+	</div>
+	<div class="large-9 columns">
+		<input type="file" id="###fieldname###" name="###formValuesPrefix###[###fieldname###]" value="###value_###fieldname######" />
+		###error_###fieldname######
+	</div>
+</div>
+<div class="row">
+	<div class="large-3 columns"></div>
+	<div class="large-9 columns">
+		<br />
+	    <span>###LLL:allowedTypes###</span> <span>######fieldname###_allowedTypes###</span><br />
+	  	<span>###LLL:maxSize###</span> <span>######fieldname###_maxSize###</span><br />
+	</div>
+</div>
+<!-- ###master_basicfile### -->
+
+<!-- ###master_checkbox### -->
+<div class="row">
+	<div class="large-3 columns"></div>
+	<div class="large-9 columns">
+		<label for="###fieldname###">
+			<input type="checkbox" id="###fieldname###" name="###formValuesPrefix###[###fieldname###]" value="1" ###checked_###fieldname###_1### />
+			###LLL:###fieldname######
+		</label>
+		###error_###fieldname######
+	</div>
+</div>
+<!-- ###master_checkbox### -->
+
+<!-- ###master_spamprotection-captcha### -->
+<div class="row">
+	<div class="large-3 columns">
+		<label class="inline ###is_error_captchafield###">###LLL:captcha### ###required_captchafield###</label>
+	</div>	
+	<div class="large-9 columns">	
+		###CAPTCHA###
+		<input class="###is_error_captchafield###" type="text" name="###formValuesPrefix###[captchafield]" />
+		###error_captchafield###
+	</div>
+</div>
+<!-- ###master_spamprotection-captcha### -->
+
+<!-- ###master_spamprotection-jm_recaptcha### -->
+<div class="row">
+	<div class="large-3 columns">
+		<label class="inline ###is_error_recaptcha_response_field###">###LLL:captcha### *</label>
+	</div>
+	<div class="large-9 columns">
+		###RECAPTCHA###
+		###error_recaptcha_response_field###
+	</div>
+</div>
+<!-- ###master_spamprotection-jm_recaptcha### -->
+
+<!-- ###master_spamprotection-sr_freecap### -->
+<div class="row">
+	<div class="large-3 columns">
+		<label class="###is_error_freecapfield###">###SR_FREECAP_NOTICE### ###required_freecapfield###</label>
+	</div>
+	<div class="large-9 columns">
+		###SR_FREECAP_IMAGE###
+			<input class="###is_error_freecapfield###" type="text" size="15" id="freecapfield" name="###formValuesPrefix###[freecapfield]" title="###SR_FREECAP_NOTICE###" value="" />
+			###error_freecapfield###
+			###SR_FREECAP_CANT_READ###
+	</div>
+</div>
+<!-- ###master_spamprotection-sr_freecap### -->
+
+<!-- ###master_spamprotection-wt_calculating_captcha### -->
+<div class="row">
+	<div class="large-3 columns">
+		<label class="inline ###is_error_wt_calculating_captchafield###">###LLL:captcha### ###required_wt_calculating_captchafield###</label>
+	</div>
+	<div class="large-9 columns">
+		###WT_CALCULATING_CAPTCHA###
+		<input class="###is_error_wt_calculating_captchafield###" type="text" name="###formValuesPrefix###[wt_calculating_captchafield]" />
+		###error_wt_calculating_captchafield###
+	</div>
+</div>
+<!-- ###master_spamprotection-wt_calculating_captcha### -->
+
+<!-- ###master_spamprotection-mathguard### -->
+<div class="row mathguard">
+	<div class="large-3 columns">
+		<label class="###is_error_mathguard_answer###">###LLL:captcha### *</label>
+	</div>
+	<div class="large-9 columns">	
+		###MATHGUARD###
+		###error_mathguard_answer###
+	</div>
+</div>
+<!-- ###master_spamprotection-mathguard### -->
+
+<!-- ###master_spamprotection-timecheck### -->
+<input type="hidden" name="###formValuesPrefix###[formtime]" value="###TIMESTAMP###" />
+<!-- ###master_spamprotection-timecheck### -->
+
+<!-- ###master_submit### -->
+<div class="row">
+	<div class="large-12 columns">
+		<input type="submit" ###submit_nextStep### class="button secondary right" value="###LLL:submit###" />
+	</div>
+</div>
+<!-- ###master_submit### -->
+
+<!-- ###master_submit-disable### -->
+<div class="row">
+	<div class="large-12 columns">
+		<input type="submit" ###submit_nextStep### class="button secondary right ###validation-status###" value="###LLL:submit###" />
+	</div>
+</div>
+<!-- ###master_submit-disable### -->
+
+<!-- ###master_ajax-submit### -->
+<div class="row">
+	<div class="large-10 small-10 columns">
+		###loading_ajax-submit###
+	</div>
+	<div class="large-2 small-2 columns">
+		<input type="submit" ###submit_nextStep### class="button secondary right" id="fomhandler_submit" value="###LLL:submit###" />
+	</div>
+</div>
+<!-- ###master_ajax-submit### -->
+
+<!-- ###master_next### -->
+<div class="row">
+	<div class="large-12 columns">
+		<input type="submit" ###submit_nextStep### class="button secondary right" value="###LLL:next###" />
+	</div>
+</div>
+<!-- ###master_next### -->
+
+<!-- ###master_prev### -->
+<div class="row">
+	<div class="large-12 columns">
+		<input type="submit" ###submit_prevStep### class="button secondary right" value="###LLL:prev###" />
+	</div>
+</div>
+<!-- ###master_prev### -->
+
+<!-- ###master_prevnext### -->
+<div class="row">
+	<div class="large-6 columns">
+		<input type="submit" ###submit_prevStep### class="button secondary" value="###LLL:prev###" />
+	</div>
+	<div class="large-6 columns">
+		<input type="submit" ###submit_nextStep### class="button secondary right" value="###LLL:next###" />
+	</div>
+</div>
+<!-- ###master_prevnext### -->
+
+<!-- ###master_prevsubmit### -->
+<div class="row">
+	<div class="large-6 columns">
+		<input type="submit" ###submit_prevStep### class="button secondary" value="###LLL:prev###" />
+	</div>
+	<div class="large-6 columns">
+		<input type="submit" ###submit_nextStep### class="button secondary right" value="###LLL:submit###" />
+	</div>
+</div>
+<!-- ###master_prevsubmit### -->
+
+<!-- ###master_form-start### -->
+<form action="###REL_URL###" method="post" id="###fieldname###" class="form-examples">
+  ###HIDDEN_FIELDS###
+<!-- ###master_form-start### -->
+
+<!-- ###master_multipart-form-start### -->
+<form action="###REL_URL###" method="post" id="Formular" enctype="multipart/form-data" class="form-examples">
+  ###HIDDEN_FIELDS###
+<!-- ###master_multipart-form-start### -->
+
+<!-- ###master_form-end### -->
+</form>
+<!-- ###master_form-end### -->
+
+<!-- ###master_section-start### -->
+<!-- ###master_section-start### -->
+
+<!-- ###master_section-end### -->
+<!-- ###master_section-end### -->
+
+<!-- ###master_email-user-start-plain### -->
+
+###LLL:greetings### ###value_name###
+
+###LLL:email_user_text###
+
+<!-- ###master_email-user-start-plain### -->
+
+<!-- ###master_email-user-end-plain### -->
+
+###LLL:email_user_footer###
+<!-- ###master_email-user-end-plain### -->
+
+<!-- ###master_email-admin-start-plain### -->
+
+###LLL:email_admin_text###
+
+<!-- ###master_email-admin-start-plain### -->
+
+<!-- ###master_email-admin-end-plain### -->
+
+###LLL:email_admin_footer###
+<!-- ###master_email-admin-end-plain### -->
+
+<!-- ###master_email-user-start-html### -->
+<p>###LLL:greetings### ###value_name###,</p>
+<br />
+<p>###LLL:email_user_text###</p>
+<br />
+<table>
+<!-- ###master_email-user-start-html### -->
+
+<!-- ###master_email-user-end-html### -->
+</table>
+<br />
+<p>###LLL:email_user_footer###</p>
+<!-- ###master_email-user-end-html### -->
+
+<!-- ###master_email-admin-start-html### -->
+
+<p><strong>###LLL:email_admin_text###</strong></p>
+<br />
+<table>
+<!-- ###master_email-admin-start-html### -->
+
+<!-- ###master_email-admin-end-html### -->
+</table>
+<br />
+<p>###LLL:email_admin_footer###</p>
+<!-- ###master_email-admin-end-html### -->
+
+<!-- ###master_email-line-plain### -->
+###LLL:###fieldname###### ###value_###fieldname######
+<!-- ###master_email-line-plain### -->
+
+<!-- ###master_email-line-html### -->
+<tr>
+	<td valign="top"><strong>###LLL:###fieldname######</strong></td>
+	<td>###value_###fieldname######</td>
+</tr>
+<!-- ###master_email-line-html### -->

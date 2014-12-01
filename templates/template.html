@@ -1,0 +1,84 @@
+<!-- ###TEMPLATE_FORM1### begin -->
+<div id="form_body" >
+	<form class="form-horizontal" name="Formular" id="Formular" method="post" action="###REL_URL###" enctype="multipart/form-data">
+		<input type="hidden" name="id" id="id" value="###PID###" />
+		<input type="hidden" name="submitted" value="1" />
+		
+		<input type="hidden" name="L" value="###value_L###" />
+                
+                <div class="control-group">
+			<input type="submit" class="btn btn-primary" value="###LLL:send###" tabindex="8" ###submit_nextStep### />
+		</div>
+	
+		<label>* = ###LLL:mandatory###</label>xxxxx
+		
+	</form>
+</div>
+<!-- ###TEMPLATE_FORM1### end -->
+
+
+<!-- ###TEMPLATE_EMAIL_ADMIN_PLAIN### begin -->
+###value_first_name###, ###LLL:your_information_saved###<br /><br />
+###LLL:you_have_registered###:<br />
+###LLL:first_name### : ###value_first_name###<br />
+###LLL:last_name### : ###value_last_name###<br />
+###LLL:organisation### : ###value_organisation###<br />
+###LLL:email###: ###value_email###<br />
+###LLL:address###: ###value_address###<br />
+###LLL:telephone###: ###value_telephone###<br />
+###LLL:comment###: ###value_comment###<br />
+<!-- ###TEMPLATE_EMAIL_ADMIN_PLAIN### end-->
+
+
+<!-- ###TEMPLATE_EMAIL_ADMIN_HTML### begin -->
+###value_first_name###, ###LLL:your_information_saved###<br /><br />
+###LLL:you_have_registered###:<br />
+###LLL:first_name### : ###value_first_name###<br />
+###LLL:last_name### : ###value_last_name###<br />
+###LLL:organisation### : ###value_organisation###<br />
+###LLL:email###: ###value_email###<br />
+###LLL:address###: ###value_address###<br />
+###LLL:telephone###: ###value_telephone###<br />
+###LLL:comment###: ###value_comment###<br />
+<!-- ###TEMPLATE_EMAIL_ADMIN_HTML### end -->
+
+
+<!-- ###TEMPLATE_EMAIL_USER_PLAIN### begin -->
+Ny anm&auml;lan:<br /><br />
+###LLL:first_name### : ###value_first_name###<br />
+###LLL:last_name### : ###value_last_name###<br />
+###LLL:organisation### : ###value_organisation###<br />
+###LLL:email###: ###value_email###<br />
+###LLL:address###: ###value_address###<br />
+###LLL:telephone###: ###value_telephone###<br />
+###LLL:comment###: ###value_comment###<br />
+<!-- ###TEMPLATE_EMAIL_USER_PLAIN### end -->
+
+
+<!-- ###TEMPLATE_EMAIL_USER_HTML### begin -->
+Ny anm&auml;lan:<br /><br />
+###LLL:first_name### : ###value_first_name###<br />
+###LLL:last_name### : ###value_last_name###<br />
+###LLL:organisation### : ###value_organisation###<br />
+###LLL:email###: ###value_email###<br />
+###LLL:address###: ###value_address###<br />
+###LLL:telephone###: ###value_telephone###<br />
+###LLL:comment###: ###value_comment###<br />
+<!-- ###TEMPLATE_EMAIL_USER_HTML### end-->
+
+
+<!-- ###TEMPLATE_SUBMITTEDOK### begin-->
+<div class="submitted" align="left" >
+<p class="bodytext">
+<b>###value_first_name###, ###LLL:your_information_saved###</b><br /><br />
+###LLL:you_have_registered###:<br />
+###LLL:first_name### : ###value_first_name###<br />
+###LLL:last_name### : ###value_last_name###<br />
+###LLL:organisation### : ###value_organisation###<br />
+###LLL:email###: ###value_email###<br />
+###LLL:address###: ###value_address###<br />
+###LLL:telephone###: ###value_telephone###<br />
+###LLL:comment###: ###value_comment###
+</p>
+</div>
+<!-- ###TEMPLATE_SUBMITTEDOK### end -->

@@ -1,0 +1,97 @@
+<T3DataStructure>
+ <meta>
+       <langDisable>1</langDisable>
+ </meta>
+<sheets>
+  <sDEF>
+        <ROOT>
+        
+         <type>array</type>
+         <el>
+             
+        <form_title>
+            <TCEforms>
+            <label>Title of the form</label>
+            <config>
+            <type>input</type>
+            <size>30</size>
+            </config>
+            </TCEforms>
+        </form_title>
+        
+        <form_description>
+             <TCEforms>
+                <label>Description of the form</label>
+                <config>
+                <type>text</type>
+                <cols>50</cols>
+               <rows>5</rows>
+                </config>
+             </TCEforms>
+         </form_description>
+             
+        <to_email>
+            <TCEforms>
+            <label>Email address of the admin</label>
+            <config>
+            <type>input</type>
+            <size>30</size>
+            </config>
+            </TCEforms>
+        </to_email>
+        
+        <content_email>
+             <TCEforms>
+                <label>Content of the email</label>
+                <config>
+                <type>text</type>
+                <cols>50</cols>
+               <rows>5</rows>
+                </config>
+             </TCEforms>
+         </content_email>
+         
+        <subject>
+            <TCEforms>
+            <label>Subject of the email</label>
+            <config>
+            <type>input</type>
+            <size>30</size>
+            </config>
+            </TCEforms>
+        </subject>  
+        
+        <save_db>
+            <TCEforms>
+            <label>Save to database</label>
+            <config>
+            <type>check</type>
+            <default>1</default>
+            </config>
+            </TCEforms>
+        </save_db>
+        
+        <send_mail>
+            <TCEforms>
+            <label>Send an email</label>
+            <config>
+            <type>check</type>
+            <default>1</default>
+            </config>
+            </TCEforms>
+        </send_mail>
+             
+         <dynField>
+            <TCEforms>
+                <config>
+                 <type>user</type>
+                  <userFunc>user_dynamic_flexform->form_builder</userFunc>
+                </config>
+             </TCEforms>
+          </dynField>
+         </el>
+     </ROOT>
+</sDEF>
+
+</sheets>
+</T3DataStructure>
