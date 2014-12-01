@@ -16,8 +16,7 @@ $TYPO3_CONF_VARS['FE']['eID_include']['formhandler'] = 'EXT:formhandler/Classes/
 $TYPO3_CONF_VARS['FE']['eID_include']['formhandler-removefile'] = 'EXT:formhandler/Classes/Utils/Tx_Formhandler_Utils_AjaxRemoveFile.php';
 $TYPO3_CONF_VARS['FE']['eID_include']['formhandler-ajaxsubmit'] = 'EXT:formhandler/Classes/Utils/Tx_Formhandler_Utils_AjaxSubmit.php';
 //Novo ends
-
-//t3lib_extMgm::addPItoST43($_EXTKEY, 'pi2/class.tx_mailformplusadmin_pi2.php', '_pi2', 'list_type', 1);
+t3lib_extMgm::addPItoST43($_EXTKEY, 'pi2/class.tx_mailformplusadmin_pi2.php', '_pi2', 'list_type', 1);
 //Add as a new type
 t3lib_extMgm::addPlugin(array(
     'LLL:EXT:mailformplus_admin/locallang_db.xml:tt_content.CType_pi2',

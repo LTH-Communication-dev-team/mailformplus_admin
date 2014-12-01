@@ -206,6 +206,7 @@ class user_dynamic_flexform
                 
                 function ajaxFunction(action,scope,json_str)
                 {
+		console.log("209");
                     if(json_str) {
                         var strformtitle = jQuery("#formtitle").val();
                         var strformdescription = jQuery("#formdescription").val();

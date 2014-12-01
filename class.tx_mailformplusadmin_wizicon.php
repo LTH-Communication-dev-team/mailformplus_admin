@@ -9,10 +9,10 @@ class tx_mailformplusadmin_wizicon {
          */
         function proc($wizardItems)     {
                 $wizardItems['plugins_tx_mailformplusadmin'] = array(
-                        'icon' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('examples') . 'Resources/Public/Images/PiErrorWizard.png',
+                        'icon' => t3lib_extMgm::extRelPath('mailformplus_admin') . 'pi2/ce_wiz.gif',
                         'title' => 'Formhandler Easy setup',
                         'description' => 'Formhandler Easy setup',
-                        'params' => '&defVals[tt_content][CType]=list&&defVals[tt_content][list_type]=mailformplusadmin'
+                        'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=mailformplus_admin_pi2'
                 );
 
                 return $wizardItems;

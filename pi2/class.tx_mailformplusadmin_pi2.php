@@ -80,7 +80,7 @@ class tx_mailformplusadmin_pi2 extends tslib_pibase {
                 $content .= 'No data!';
             }
 
-            return $content;
+            return $content.'öööö';
 	}
         
         function showFormhandler($pluginId,$to_email,$subject,$content_email)
@@ -181,6 +181,7 @@ class tx_mailformplusadmin_pi2 extends tslib_pibase {
 				
             jQuery(document).ready(function () {
                 // Generate a form
+		console.log("184");
                 jQuery("#Formular").dform({
                     "action" : "'.$_SERVER["REQUEST_URI"].'",
                     "method" : "post",

@@ -11,7 +11,7 @@ if (TYPO3_MODE === 'BE') {
 
 // Add plugin to new element wizard
 if (TYPO3_MODE == 'BE') {
-    $TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_mailformplusadmin_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'mailformplus_admin/class.tx_mailformplusadmin_wizicon.php';
+    $TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['tx_mailformplusadmin_wizicon'] = t3lib_extMgm::extPath($_EXTKEY) . 'class.tx_mailformplusadmin_wizicon.php';
 }
 
 $TCA['tx_mailformplusadmin_fields'] = array(
@@ -63,7 +63,6 @@ include_once(t3lib_extMgm::extPath($_EXTKEY).'pi2/dynamicflexform/class.dynamic_
 
 t3lib_div::loadTCA('tt_content');
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY.'_pi2'] = 'layout,select_key,pages';
-
 
 t3lib_extMgm::addPlugin(array(
 	'LLL:EXT:mailformplus_admin/locallang_db.xml:tt_content.list_type_pi2',
