@@ -187,8 +187,8 @@ class tx_mailformplusadmin_pi2 extends tslib_pibase {
                     "enctype" : "multipart/form-data",'.$formStructure.',
                     "id" : "newForm"
                 });
-		jQuery("#newForm").append(jQuery("#receive-copy").parent().parent());
-		jQuery("#newForm").append(jQuery("#fomhandler_submit").parent().parent());
+		//jQuery("#newForm").append(jQuery("#receive-copy").parent().parent());
+		//jQuery("#newForm").append(jQuery("#fomhandler_submit").parent().parent());
             });
             </script>';
             return $content;
