@@ -242,6 +242,7 @@ $aItem = array();
                 unset($paramsArray['step-2-next']);
                 unset($paramsArray['submitField']);
                 unset($paramsArray['submitted']);
+		unset($paramsArray['receive-copy']);
                 /*print "<pre>";
                 print_r($chosenFieldsArray);
                 print "</pre>";*/
