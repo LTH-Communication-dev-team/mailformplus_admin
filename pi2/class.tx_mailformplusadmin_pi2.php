@@ -181,13 +181,14 @@ class tx_mailformplusadmin_pi2 extends tslib_pibase {
 				
             jQuery(document).ready(function () {
                 // Generate a form
-                jQuery("#formhandlerTest").dform({
+                jQuery("#Formular").dform({
                     "action" : "'.$_SERVER["REQUEST_URI"].'",
                     "method" : "post",
                     "enctype" : "multipart/form-data",'.$formStructure.',
                     "id" : "newForm"
                 });
-                jQuery("newForm").replaceWith(jQuery("newForm").html());
+		jQuery("#newForm").append(jQuery("#receive-copy").parent().parent());
+		jQuery("#newForm").append(jQuery("#fomhandler_submit").parent().parent());
             });
             </script>';
             return $content;
