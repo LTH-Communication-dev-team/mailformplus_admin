@@ -39,8 +39,8 @@ switch($action) {
 	foreach($tableHeader as $key => $value) {
 	    $content .= "<th>$value</th>";
 	}*/
-	$content .= '<thead><th title="Untitled">untitled</th></thead>';
-	$content .= '<tfoot><th title="Untitled">Untitled</th></tfoot>';
+	$content .= '<thead><tr></tr></thead>';
+	$content .= '<tfoot><tr></tr></tfoot>';
 	$content .= "</table>";
 	$content .= "<button id=\"btnDeleteMemRow\">Delete record</button>";
 	$content .= "</form>";
@@ -119,13 +119,15 @@ switch($action) {
 			dataType: "json",
 			success: function(resultData) {
 			    aoColumnArray = [];
-			    $.each(resultData.headers, function(index, value) {
+			    $.each(resultData.headers.split(","), function(index, value) {
 				var aoColumns = new Object;
 				aoColumns["sTitle"] = value;
 				aoColumnArray.push(aoColumns);
+				$("#mailformplus_adminTable thead tr").append(\'<th title="\'+value+\'">\'+value+\'</th>\');
+				//$("#mailformplus_adminTable tfoot tr").append(\'<td title="\'+value+\'">\'+value+\'</td>\');
 			    });
-			    ticketTable= [];
-			    ticketTable.aaData = resultData.tickets;
+			    ticketTable = [];
+			    ticketTable.aaData = resultData.tickets.aaData;
 			    ticketTable.aaSorting = [[0, "asc"], [0, "desc"]];
 			    ticketTable.aoColumns = aoColumnArray;
 			    ticketTable.bJQueryUI = true;
@@ -138,15 +140,15 @@ switch($action) {
 			    ticketTable.sDom = "Rlfrtip";
 	    
 			    oTable = $("#mailformplus_adminTable").dataTable(ticketTable).makeEditable({
-				sUpdateURL: "typo3/ajax.php?ajaxID=mailformplus_admin::ajaxFunctions&scope='.$scope.'&action=updateRow&query=&pid='.$pid.'&sid"+Math.random(),
-				"aoColumns": [
+				sUpdateURL: "typo3/ajax.php?ajaxID=mailformplus_admin::ajaxFunctions&action=updateRow&sid"+Math.random(),
+				/*"aoColumns": [
 				    {
 					tooltip: "untitled",
 					oValidationOptions : { rules:{ value: {minlength: 3 }  },
 					messages: { value: {minlength: "Min length - 3"} } }
 				    }
-				],
-				sDeleteURL: "typo3/ajax.php?ajaxID=mailformplus_admin::ajaxFunctions&scope='.$scope.'&action=deleteRow&query=&pid='.$pid.'&sid"+Math.random(),
+				],*/
+				sDeleteURL: "typo3/ajax.php?ajaxID=mailformplus_admin::ajaxFunctions&action=deleteRow&sid"+Math.random(),
 				sDeleteRowButtonId: "btnDeleteMemRow",
 			    });
 			    
@@ -244,7 +246,6 @@ switch($action) {
                         query += boxArray[i].value;
                     }
                 }
-                console.log(query);
                 if(confirm("Are you sure you want to delete this row/s?")) {
                     ajax("deleteRow",pid,query,pid);
                 }

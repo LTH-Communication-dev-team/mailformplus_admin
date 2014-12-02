@@ -35,10 +35,10 @@ class tx_mailformplusadmin {
                 return $this->exportDo($scope,$query,$pid);
                 break;            
             case "deleteRow":
-                return $this->deleteRow($scope,$query,$pid);
+                return $this->deleteRow();
                 break;
             case "updateRow":
-                return $this->updateRow($scope,$query,$pid);
+                return $this->updateRow();
                 break;
             case "setOk":
                 return $this->setOk($scope,$query);
@@ -222,9 +222,10 @@ class tx_mailformplusadmin {
 		'iTotalRecords' => count($res),
 		'iTotalDisplayRecords' => $total_records,
 		'aaData' => array(),
-	    );	    
+	    );
+	    
 $aItem = array();
-$arrayKey='';
+
             while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
                 $i=0;
                 $uid = $row["uid"];
@@ -243,13 +244,18 @@ $arrayKey='';
                 unset($paramsArray['submitted']);
                 /*print "<pre>";
                 print_r($chosenFieldsArray);
-                print "<pre>";*/
+                print "</pre>";*/
                 //a:11:{s:11:"contact_via";s:5:"email";s:5:"email";s:26:"tomas.havner@kansli.lth.se";s:9:"firstname";s:2:"dd";s:9:"interests";a:2:{i:0;s:6:"sports";i:1;s:5:"music";}s:8:"lastname";s:2:"dd";s:8:"randomID";s:32:"8f15a9f644088512510b7c8f3edeb742";s:10:"removeFile";s:0:"";s:15:"removeFileField";s:0:"";s:11:"step-2-next";s:4:"Send";s:11:"submitField";s:0:"";s:9:"submitted";s:1:"1";}
                 if(is_array($paramsArray)) {
-		    //$aItem = array();
+		    $aItem = array();
 		    $arrayValue = "";
-
 		    foreach($paramsArray as $key => $value) {
+			if($arrayKey) {
+				    $arrayKey .= ",";
+				}
+				$arrayKey .= $key;
+				
+				$aItem[] = $value;
 			//$aItem[] = $value;
 			//echo $ii;
 			/*if(is_array($value)) {
@@ -266,11 +272,7 @@ $arrayKey='';
 			    }
 			} else {*/
 			    
-			    if($arrayKey) {
-				$arrayKey .= ",";
-			    }
-			    $arrayKey .= $key;
-			    $aItem[] = array($key, $value, 'DT_RowId' => $uid);
+			    
 			//}
 			/*if(is_array($chosenFieldsArray) and array_search($key, $chosenFieldsArray)!==false) {
 			    $myArray[$uid][$key] = $arrayValue;
@@ -288,26 +290,23 @@ $arrayKey='';
 			    }
 			}*/
 			//echo $ii;
-			$i++;
 		    }
-		    
+		    //$paramsArray['DT_RowId'] = $uid;
+		    //$aItem[] = array($uid,$arrayValue);
 		}
-		//$aItem[] = array('DT_RowId', $uid);
+		$aItem['DT_RowId'] = $uid;
                 //echo $ii;
-		if($arrayValue) {
-		    $aItem = 
-		    
-		    $output['aaData'][] = $aItem;
-		}
+		$output['aaData'][] = $aItem;
 		
                 $ii++;			
             }
+	    //echo $arrayKey;
 	    /*print "<pre>";
             print_r($output);
             print "<pre>";*/
 	    //$tickets = array(array(1, 'Options 1'), array(2, 'Options 2'
 	    $headers = implode(',',array_unique(explode(',', $arrayKey)));
-	    return json_encode(array('tickets' => $aItem, 'headers' => array($headers)));
+	    return json_encode(array('tickets' => $output, 'headers' => $headers));
             if($chosenFields) $chosenFieldsArray = explode(",", $chosenFields);
             $pages = ceil($total_records / $rows_per_page);
             //print_r($myArray);
@@ -685,38 +684,15 @@ $arrayKey='';
         return json_encode($returnArray);
     }
 		
-    function deleteRow($scope,$query,$pid)
+    function deleteRow()
     {
 	$iId = (int)$_POST['id'];
 	if ($iId) {
 	    //$GLOBALS['MySQL']->res("DELETE FROM `pd_profiles` WHERE `id`='{$iId}'");
-	    $res = $GLOBALS["TYPO3_DB"]->exec_DELETEquery("tx_formhandler_log", "uid=".$iId) or die("645: ".mysql_error());
+	    $res = $GLOBALS["TYPO3_DB"]->exec_DELETEquery("tx_formhandler_log", "uid=".intval($iId)) or die("692: ".mysql_error());
 	    return;
 	}
-	echo 'Error'.$iId;
-	exit;
 	
-        //$log_type = t3lib_div::_POST("log_type");
-        global $LANG;
-        //die("$uid-$pageId-$type");
-        $screen = t3lib_div::_GP("screen");
-        $uidArray = explode(',',$query);
-        foreach($uidArray as $myUid) {
-            //$log_type = $uidArray[0];
-            //$myUid = $uidArray[1];
-
-            //if($log_type=="formhandler") {
-            $res = $GLOBALS["TYPO3_DB"]->exec_DELETEquery("tx_formhandler_log", "uid=" . intval($myUid)) or die("645: ".mysql_error());
-            /*} else {
-                    $res = $GLOBALS["TYPO3_DB"]->exec_DELETEquery("tx_thmailformplus_log", "uid=" . intval($myUid)) or die("915: ".mysql_error());
-            }*/
-        }
-
-        //$content .= $this->printTableHeader();
-        $content .= "<tr><td colspan=\"2\" align=\"center\" style=\"height:100px;\"><h1>Posten/posterna &auml;r raderade!</h1></td></tr>";
-        $content .= "<tr><td colspan=\"2\" align=\"center\" style=\"height:100px;\"><input onclick=\"ajax('printList','$pid','','$pid');\" type=\"button\" name=\"btnBack\" id=\"btnBack\" value=\"Back\" title=\"Back\" /></td></tr>";
-        //$content .= $this->printTableFooter();	
-        
         $returnArray = array();
         $returnArray['content'] = $content;
         return json_encode($returnArray);
@@ -1157,7 +1133,7 @@ $arrayKey='';
             return $returnArray;
 	}
 	
-	function updateRow($scope,$query,$pid)
+	function updateRow()
 	{
 	    $sVal = $_POST['value'];
 	    $iId = (int)$_POST['id'];
@@ -1165,89 +1141,21 @@ $arrayKey='';
 	    
 	    if ($iId && $sVal !== FALSE) {
 		//Read post
-		$res = $GLOBALS["TYPO3_DB"]->exec_SELECTquery("params", "tx_formhandler_log", "uid=".intval($iId)) or die("1171: ".$pid.mysql_error());
+		$res = $GLOBALS["TYPO3_DB"]->exec_SELECTquery("params", "tx_formhandler_log", "uid=".intval($iId)) or die("1167: ".$mysql_error());
 		$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
 		$params = $row['params'];
 		$paramsArray = unserialize($params);
-		echo 'Successfully saved';
-		if(is_array($value)) {
-			$params .= 's:' . strlen($key) . ':"' . addslashes(htmlspecialchars($key)) . '";a:' . count($value) . ':{';
-			foreach($value as $key1 => $value1) {
-				//i:0;s:6:"sports";i:1;s:5:"music";
-				$params .= 'i:' . addslashes(htmlspecialchars($key1)) . ';s:' . strlen($value1) . ':"' . addslashes(htmlspecialchars($value1)) . '";';
-			}
-			$params .= '}';
-		} else {
-			$params .= 's:' . strlen($key) . ':"' . addslashes(htmlspecialchars($key)) . '";s:' . strlen($value) . ':"' . addslashes(htmlspecialchars($value)) . '";';
-		}
+		$paramsArray[$columnName] = addslashes($sVal);
+		$params = serialize($paramsArray);
 	    }
-	    exit;
 	    
-            global $LANG;
-            //onclick=\"ajax('index.php?id=$pageId&amp;uid=$uid&amp;pid=$pid&amp;screen=$screen&amp;SET[function]=7');\"
-            //a:9:{s:11:"looking_for";s:2:"aa";s:7:"missing";s:2:"aa";s:8:"randomID";s:32:"38578035ffd234e003bbfaa5d776fa6b";s:10:"removeFile";s:0:"";s:15:"removeFileField";s:0:"";s:11:"step-2-next";s:6:"Skicka";s:11:"submitField";s:0:"";s:9:"submitted";s:1:"1";s:12:"visitor_type";s:8:"external";}
-            //screen, SETArray, id
-            $json = $query;
-            
-            $json = str_replace('&quot;','"',$json);
-            if (get_magic_quotes_gpc() == 1) {
-                $json = stripslashes($json);
-            }
-            $json = str_replace('\\', '', $json);
-            $postArray = json_decode($json,true);
-            
-            unset($postArray["id"]);
-            unset($postArray["uid"]);
-            unset($postArray["pid"]);
-            unset($postArray["screen"]);
-            unset($postArray["SET"]);
-            unset($postArray["log_type"]);
-
-            //if($log_type=="formhandler") {
-            $table = "tx_formhandler_log";
-            $params = 'a:' . count($postArray) . ':{';
-            foreach($postArray as $key => $value) {
-                    if(is_array($value)) {
-                            $params .= 's:' . strlen($key) . ':"' . addslashes(htmlspecialchars($key)) . '";a:' . count($value) . ':{';
-                            foreach($value as $key1 => $value1) {
-                                    //i:0;s:6:"sports";i:1;s:5:"music";
-                                    $params .= 'i:' . addslashes(htmlspecialchars($key1)) . ';s:' . strlen($value1) . ':"' . addslashes(htmlspecialchars($value1)) . '";';
-                            }
-                            $params .= '}';
-                    } else {
-                            $params .= 's:' . strlen($key) . ':"' . addslashes(htmlspecialchars($key)) . '";s:' . strlen($value) . ':"' . addslashes(htmlspecialchars($value)) . '";';
-                    }
-                    //a:11:{s:11:"contact_via";s:5:"email";s:5:"email";s:26:"tomas.havner@kansli.lth.se";s:9:"firstname";s:2:"��";s:9:"interests";a:2:{i:0;s:6:"sports";i:1;s:5:"music";}s:8:"lastname";s:2:"��";s:8:"randomID";s:32:"8acaf7d1f532afcca7d82d72d1603c26";s:10:"removeFile";s:0:"";s:15:"removeFileField";s:0:"";s:11:"step-2-next";s:4:"Send";s:11:"submitField";s:0:"";s:9:"submitted";s:1:"1";}
-            }
-            $params .= '}';
-            $keys = array_keys($postArray);
-            $hash = md5(serialize($keys));
             $updateArray = array(
                     "tstamp" => time(),
                     "ip" => t3lib_div::getIndpEnv('REMOTE_ADDR'),
-                    "params" => $params,
-                    "key_hash" => $hash
+                    "params" => $params
             );
-           /* } else {
-                    $table = "tx_thmailformplus_log";
-                    $updateKeys = "id;submitted;L;type";
-                    $updateValues = "~$uid;~1;~;~";
-                    foreach($postArray as $key => $value) {
-                            $updateKeys .= ";$key";
-                            $updateValues .= ";~$value";
-                    }
-                    $updateArray = array(
-                            "submittedfields" => "$updateKeys\n$updateValues"
-                    );
-                    //test;id;submitted;L;type;name;subject;program;datum;deltagare;innehall;reflektioner;moment;tanka
-                    //test;~5341;~1;~;~;~tt;~tt;~tt;~tt;~tt;~tt;~tt;~tt;~tt
-            }*/
 
-            /*print "<pre>";
-            print_r($updateArray);
-            print "</pre>";*/
-            //die($table . "uid=" . intval($uid) . " AND pid=" . intval($pid));
-            $res = $GLOBALS["TYPO3_DB"]->exec_UPDATEquery($table, "uid=" . intval($scope) . " AND pid=" . intval($pid), $updateArray);
+            $res = $GLOBALS["TYPO3_DB"]->exec_UPDATEquery("tx_formhandler_log", "uid=" . intval($iId), $updateArray);
             $result = mysql_affected_rows();
             $message = "";
             if($result == -1) {
@@ -1257,15 +1165,11 @@ $arrayKey='';
             } else {
                     $message = "$result rows affected";
             }
+	    
+	    $returnArray = array();
+            $returnArray['content'] = $message;
 
-            //$content .= $this->printTableHeader();
-            $content .= "<tr><td colspan=\"2\" align=\"center\" style=\"height:100px;\"><h1>$message</h1></td></tr>";
-            $content .= "<tr><td colspan=\"2\" align=\"center\" style=\"height:100px;\"><input onclick=\"ajax('printList','$pid','','$pid');\" type=\"button\" name=\"btnBack\" id=\"btnBack\" value=\"Back\" /></td></tr>";
-            //$content .= $this->printTableFooter().var_dump($postArray);
-
-            $returnArray = array();
-            $returnArray['content'] = $content.$query.'lllllll';
-            return json_encode($returnArray);
+            return $sVal;
 	}
         
         function saveFormStructure($scope,$query)
