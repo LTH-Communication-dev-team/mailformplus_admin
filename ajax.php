@@ -118,15 +118,12 @@ switch($action) {
 			data: "&action=printList&scope='.intval($scope).'&sid"+Math.random(),
 			dataType: "json",
 			success: function(resultData) {
-			    console.log(resultData.headers);
 			    aoColumnArray = [];
-			    console.log("93");
 			    $.each(resultData.headers, function(index, value) {
 				var aoColumns = new Object;
 				aoColumns["sTitle"] = value;
 				aoColumnArray.push(aoColumns);
 			    });
-			    console.log("99");
 			    ticketTable= [];
 			    ticketTable.aaData = resultData.tickets;
 			    ticketTable.aaSorting = [[0, "asc"], [0, "desc"]];

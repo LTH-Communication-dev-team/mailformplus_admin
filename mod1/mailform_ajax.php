@@ -18,8 +18,8 @@ class mailform_ajax {
         $lang = 'se'; //$GLOBALS['LANG'];
         $sid = htmlspecialchars(t3lib_div::_GP("sid"));
 
-        $ajaxObj = new tx_mailformplusadmin();
-        $content = $ajaxObj->ajaxFunctions($action,$scope,$query,$lang,$user,$pid,$firstrun);
+        $myAjaxObj = new tx_mailformplusadmin();
+        $content = $myAjaxObj->ajaxFunctions($action,$scope,$query,$lang,$user,$pid,$firstrun);
         if($action==='getFormStructure' or $action==='printDetail' or $action==='printList' or $action==='printColumns' 
                 or $action==='exportChoice' or $action==='deleteRow' or $action==='updateRow' or $action==='saveColumns' or $action==='updateRow') {
             echo $content;
