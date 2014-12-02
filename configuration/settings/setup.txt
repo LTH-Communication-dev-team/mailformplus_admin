@@ -36,7 +36,7 @@ plugin.Tx_Formhandler.settings {
 
 plugin.tx_mailformplusadmin_pi2.formhandler < plugin.Tx_Formhandler
 plugin.tx_mailformplusadmin_pi2.formhandler.settings {
-    #debug=1
+    debug=1
 	# This is the title of the predefined form shown in the dropdown box in the plugin options.
 	#name = Formhandler AJAX Submit Form
 	
